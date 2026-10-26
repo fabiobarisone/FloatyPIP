@@ -16,7 +16,7 @@ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources" dist
 
 FRAMEWORKS=(-framework Cocoa -framework WebKit -framework Carbon -framework ServiceManagement)
 for ARCH in arm64 x86_64; do
-  echo "→ Compilo $ARCH…"
+  echo "→ Compilo ${ARCH}…"
   swiftc -O -target "${ARCH}-apple-macos13.0" Sources/*.swift -o "build/FloatyPIP-$ARCH" "${FRAMEWORKS[@]}"
 done
 lipo -create build/FloatyPIP-arm64 build/FloatyPIP-x86_64 -output "$APP/Contents/MacOS/FloatyPIP"
